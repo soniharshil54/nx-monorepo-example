@@ -9,6 +9,10 @@ app.get('/', (req, res) => {
   res.send({ message: 'Hello API' });
 });
 
-app.listen(port, host, () => {
-  console.log(`[ ready ] http://${host}:${port}`);
-});
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(port, host, () => {
+    console.log(`[ ready ] http://${host}:${port}`);
+  });
+}
+
+export default app;
